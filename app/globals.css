@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4f0e8;
+  --panel: rgba(255, 255, 255, 0.88);
+  --panel-strong: rgba(255, 255, 255, 0.96);
+  --foreground: #0f1720;
+  --muted: #5d6470;
+  --line: rgba(15, 23, 32, 0.1);
+  --accent: #b7f171;
+  --accent-strong: #89c23e;
+  --accent-ink: #17240c;
+  --hero: #0d1117;
+  --hero-muted: rgba(255, 255, 255, 0.72);
+  --shadow-soft: 0 24px 70px rgba(15, 23, 42, 0.06);
+  --shadow-strong: 0 30px 90px rgba(15, 23, 42, 0.18);
+}
+
+[data-theme="dark"] {
+  --background: #0f1115;
+  --panel: rgba(23, 27, 34, 0.84);
+  --panel-strong: rgba(18, 22, 28, 0.94);
+  --foreground: #f3f4f6;
+  --muted: #99a1ad;
+  --line: rgba(255, 255, 255, 0.1);
+  --accent: #b7f171;
+  --accent-strong: #8ed83e;
+  --accent-ink: #15200d;
+  --hero: #0b0d11;
+  --hero-muted: rgba(255, 255, 255, 0.72);
+  --shadow-soft: 0 24px 70px rgba(0, 0, 0, 0.28);
+  --shadow-strong: 0 30px 90px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--foreground);
+  background:
+    radial-gradient(circle at top left, rgba(183, 241, 113, 0.1), transparent 24%),
+    linear-gradient(180deg, color-mix(in srgb, var(--background) 78%, white 22%) 0%, var(--background) 58%, color-mix(in srgb, var(--background) 92%, black 8%) 100%);
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: rgba(183, 241, 113, 0.42);
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: rgba(18, 22, 28, 0.96) !important;
+}
+
+[data-theme="dark"] .bg-zinc-50 {
+  background-color: rgba(22, 27, 34, 0.92) !important;
+}
+
+[data-theme="dark"] .bg-zinc-100 {
+  background-color: rgba(28, 33, 41, 0.96) !important;
+}
+
+[data-theme="dark"] .bg-zinc-200 {
+  background-color: rgba(55, 65, 81, 0.45) !important;
+}
+
+[data-theme="dark"] .border-zinc-200,
+[data-theme="dark"] .border-zinc-200\/80,
+[data-theme="dark"] .border-zinc-300 {
+  border-color: var(--line) !important;
+}
+
+[data-theme="dark"] .text-zinc-950,
+[data-theme="dark"] .text-zinc-900 {
+  color: var(--foreground) !important;
+}
+
+[data-theme="dark"] .text-zinc-700,
+[data-theme="dark"] .text-zinc-600,
+[data-theme="dark"] .text-zinc-500,
+[data-theme="dark"] .text-zinc-400 {
+  color: var(--muted) !important;
+}
+
+.panel-surface {
+  @apply rounded-[28px] bg-[color:var(--panel)] backdrop-blur-xl;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+}
+
+.panel-surface-strong {
+  @apply rounded-[28px] bg-[color:var(--panel-strong)];
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+}
+
+.section-eyebrow {
+  @apply text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-zinc-400;
+}
+
+.section-title {
+  @apply text-3xl font-semibold tracking-[-0.05em] text-[color:var(--foreground)] md:text-4xl;
+}
+
+.section-copy {
+  @apply max-w-2xl text-base leading-8 text-[color:var(--muted)];
+}
+
+.grid-wash {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.hero-poster {
+  background:
+    linear-gradient(140deg, rgba(255,255,255,0.08), transparent 45%),
+    radial-gradient(circle at top right, rgba(183,241,113,0.18), transparent 28%),
+    linear-gradient(145deg, var(--hero) 0%, color-mix(in srgb, var(--hero) 85%, #1f2d25 15%) 100%);
+}
+
+.soft-border {
+  border: 1px solid var(--line);
+}
+
+.score-track {
+  @apply h-2.5 overflow-hidden rounded-full;
+  background: color-mix(in srgb, var(--foreground) 12%, transparent 88%);
+}
+
+.score-fill {
+  @apply h-full rounded-full bg-gradient-to-r from-lime-400 via-lime-300 to-emerald-200;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-slide {
+  from {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-rise-in {
+  animation: rise-in 640ms cubic-bezier(0.2, 1, 0.22, 1) both;
+}
+
+.animate-fade-slide {
+  animation: fade-slide 520ms cubic-bezier(0.2, 1, 0.22, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
