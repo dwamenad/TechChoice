@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechChoice</title>
+    <meta
+      name="description"
+      content="TechChoice helps you choose the best current tech product from a major brand using pricing signals, positioning, and your priorities."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23101214'/%3E%3Cpath d='M14 18h36v8H36v22h-8V26H14z' fill='%2394c973'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Decision desk for current consumer tech</p>
+          <h1>TechChoice</h1>
+          <p class="hero-text">
+            Pick a company, define a few buying rules, and get the strongest
+            product match based on pricing, positioning, and what each brand is
+            clearly trying to optimize for.
+          </p>
+        </div>
+        <div class="hero-metrics" id="heroMetrics"></div>
+      </header>
+
+      <main class="workspace">
+        <aside class="panel controls">
+          <div class="panel-head">
+            <p class="section-kicker">Decision brief</p>
+            <h2>Set your buying rules</h2>
+          </div>
+
+          <div class="preset-block">
+            <div class="field-head">
+              <label>Quick presets</label>
+              <span>Load a starting point, then fine-tune it.</span>
+            </div>
+            <div class="preset-grid" id="presetGrid"></div>
+          </div>
+
+          <div class="field">
+            <label for="companySelect">Company</label>
+            <select id="companySelect"></select>
+          </div>
+
+          <div class="field">
+            <label for="categorySelect">Product family</label>
+            <select id="categorySelect"></select>
+          </div>
+
+          <div class="field">
+            <div class="field-head split">
+              <label for="budgetRange">Budget ceiling</label>
+              <span id="budgetValue"></span>
+            </div>
+            <input
+              id="budgetRange"
+              type="range"
+              min="400"
+              max="2500"
+              step="50"
+            />
+            <input id="budgetNumber" type="number" min="400" max="2500" step="50" />
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <label>Buying posture</label>
+              <span>How hard should TechChoice chase price efficiency?</span>
+            </div>
+            <div class="segment" id="styleSegment"></div>
+          </div>
+
+          <div class="field">
+            <label for="primaryPriority">Primary priority</label>
+            <select id="primaryPriority"></select>
+          </div>
+
+          <div class="field">
+            <label for="secondaryPriority">Secondary priority</label>
+            <select id="secondaryPriority"></select>
+          </div>
+
+          <div class="field">
+            <div class="field-head split">
+              <label for="dealSensitivity">Deal sensitivity</label>
+              <span id="dealSensitivityValue"></span>
+            </div>
+            <input
+              id="dealSensitivity"
+              type="range"
+              min="0"
+              max="100"
+              step="5"
+            />
+          </div>
+
+          <div class="hint-block" id="contextHint"></div>
+        </aside>
+
+        <section class="results-column">
+          <article class="panel winner" id="winnerPanel"></article>
+
+          <section class="panel lineup">
+            <div class="panel-head">
+              <p class="section-kicker">Ranked lineup</p>
+              <h2>How the current stack compares</h2>
+            </div>
+            <div class="results-list" id="resultsList"></div>
+          </section>
+
+          <section class="panel intelligence" id="intelligencePanel"></section>
+
+          <section class="panel sources">
+            <div class="panel-head">
+              <p class="section-kicker">Source trail</p>
+              <h2>Official pages behind the pricing snapshot</h2>
+            </div>
+            <div id="sourcesPanel"></div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="./data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
